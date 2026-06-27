@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RED88 Platform - License Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, #e63946 0%, #a4161a 100%);
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(230, 57, 70, 0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .user-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .user-info a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+
+        .user-info a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* WELCOME */
+        .welcome-card {
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.1) 0%, rgba(164, 22, 26, 0.1) 100%);
+            border: 2px solid #e63946;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .welcome-card h1 {
+            font-size: 36px;
+            color: #e63946;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(230, 57, 70, 0.3);
+        }
+
+        .welcome-card p {
+            color: #a0a0a0;
+            font-size: 14px;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* CARD */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(230, 57, 70, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #e63946;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.2);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            color: #e63946;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card p {
+            color: #a0a0a0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #e63946 0%, #a4161a 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+        }
+
+        .section-title {
+            color: #e63946;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e63946;
+        }
+
+        .key-info {
+            background: rgba(230, 57, 70, 0.1);
+            border-left: 4px solid #e63946;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .key-info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(230, 57, 70, 0.2);
+        }
+
+        .key-label {
+            color: #a0a0a0;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .key-value {
+            color: #e63946;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(230, 57, 70, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: #e63946;
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e63946 0%, #a4161a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            color: white;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            color: #e63946;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            color: #e0e0e0;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            background: #22c55e;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 12px;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">🔴 RED88 PLATFORM</div>
+        <div class="user-info">
+            <span>Welcome, RED88</span>
+            <a href="/admin-dashboard">Admin Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- WELCOME -->
+        <div class="welcome-card">
+            <h1>Welcome to RED88 Platform</h1>
+            <p>Your Complete License & Product Ecosystem</p>
+        </div>
+
+        <!-- MAIN ACTIONS -->
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🔑</div>
+                <h2>My License</h2>
+                <p>View your active license key, expiration date, and device count.</p>
+                <button class="btn">View License</button>
+            </div>
+
+            <a href="/red88/store" style="text-decoration: none; color: inherit;">
+            <div class="card">
+                <div class="card-icon">🛍️</div>
+                <h2>Store</h2>
+                <p>Browse products, add to cart, and checkout with your license key.</p>
+                <button class="btn" onclick="event.preventDefault();">Shop Now</button>
+            </div>
+            </a>
+
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h2>Referral</h2>
+                <p>Share your referral link and earn 1 free month for every 5 referrals.</p>
+                <button class="btn">Refer & Earn</button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">⬇️</div>
+                <h2>Downloads</h2>
+                <p>Download software, tools, and resources exclusive to key holders.</p>
+                <button class="btn">Download</button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎁</div>
+                <h2>Free Tools</h2>
+                <p>Access free tools and resources available to all members.</p>
+                <button class="btn">Explore</button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h2>Account</h2>
+                <p>Manage your profile, devices, and account settings.</p>
+                <button class="btn">Settings</button>
+            </div>
+        </div>
+
+        <!-- MY LICENSE SECTION -->
+        <div class="section-title">📋 My License</div>
+        <div class="key-info">
+            <div class="key-info-row">
+                <span class="key-label">Status</span>
+                <span class="status-badge">ACTIVE</span>
+            </div>
+            <div class="key-info-row">
+                <span class="key-label">License Key</span>
+                <span class="key-value">PRO-XXXX-XXXX-XXXX</span>
+            </div>
+            <div class="key-info-row">
+                <span class="key-label">Expires</span>
+                <span class="key-value">2024-12-31</span>
+            </div>
+        </div>
+
+        <!-- STORE SECTION -->
+        <div class="section-title">🛍️ Store</div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">📦</div>
+                <div class="product-info">
+                    <div class="product-name">Professional Suite</div>
+                    <div class="product-price">$49.99</div>
+                    <button class="btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 RED88 Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>
